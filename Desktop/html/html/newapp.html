@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Camera App</title>
+    <style>
+        .camera {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        video {
+            max-width: 100%;
+        }
+
+        canvas {
+            display: none;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .gallery img {
+            max-width: 150px;
+            margin: 10px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #captureButton {
+            background-color: grey;
+            font-weight: bold;
+            color: black;
+            border-radius: 5px;
+            line-height: 40px;
+            position: relative;
+            top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Camera App</h1>
+    <div class="camera">
+        <video id="video" autoplay></video>
+        <button id="captureButton">Capture Photo</button>
+    </div>
+    <canvas id="canvas"></canvas>
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const captureButton = document.getElementById('captureButton');
+        const gallery = document.getElementById('gallery');
+        const ctx = canvas.getContext('2d');
+
+        async function setupCamera() {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            video.srcObject = stream;
+        }
+
+        captureButton.addEventListener('click', takePicture);
+
+        function takePicture() {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            const imageURL = canvas.toDataURL('image/jpeg');
+
+            // Get the location information
+            navigator.geolocation.getCurrentPosition((position) => {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+
+                const image = new Image();
+                image.src = imageURL;
+                gallery.appendChild(image);
+
+                const locationInfo = document.createElement('p');
+                locationInfo.innerText = `Latitude: ${latitude}, Longitude: ${longitude}`;
+                gallery.appendChild(locationInfo);
+            }, (error) => {
+                console.error('Error getting location:', error);
+            });
+        }
+
+        setupCamera()
+            .then(() => {
+                console.log('Camera setup successful');
+            })
+            .catch((error) => {
+                console.error('Error setting up camera:', error);
+            });
+    </script>
+</body>
+</html>

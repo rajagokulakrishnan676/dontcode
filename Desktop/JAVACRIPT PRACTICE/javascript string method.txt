@@ -1,0 +1,134 @@
+//JAVASCRIPT STRING METHOD...
+
+//slice(starting,ending)
+/*let txt ="A,B,C,D,E,F,G";
+let change = txt.slice(0,1);
+console.log(change);*/
+
+//substring(starting,ending)
+/*let txt ="A,B,C,D,E,F,G";
+let change = txt.substring(0,1);
+console.log(change);*/
+
+
+//substr(starting,length)
+/*let txt ="A,B,C,D,E,F,G";
+let change = txt.substr(0,1);
+console.log(change);*/
+
+
+//toLowerCase & toUpperCase
+/*let txt ="Apple is in red color.red color is my favourite color.red is used to danger purpose.";
+let change = txt.toLowerCase();
+console.log(change);
+
+//slice(mention the index of the string from starting to ending it will display)
+/*let one = "Apple";
+let two = "banana";
+let both = one + two;
+let next = both.slice(0,8);
+console.log(next);*/
+
+//concat(to combine two given strings into one)
+/*let one = "Hello";
+let two = "World";
+let three = "!";
+let four = "this";
+let add = one.concat(two,three,four);
+console.log(add);*/
+
+
+//trim(both side of space)
+/*let one = "                     hello             ";
+const two =one.trim();
+console.log(two);*/
+
+
+//trimStart(trim front space)
+/*let one = "                     hello             ";
+const two =one.trimStart();
+console.log(two);*/
+
+
+//trimEnd(trim end space)
+/*let one = "                     hello             ";
+const two =one.trimEnd();
+console.log(two);*/
+
+
+//padStart(length,what to add in starting)
+/*let one = "Apple";
+let pew = one.padStart(25,"apple");
+console.log(pew);*/
+
+//padEnd(length,what to add at end end)
+/*let one = "9";
+let pew = one.padEnd(5,"apple");
+console.log(pew);*/
+
+//charAt(index)
+/*let txt ="A,B,C,D,E,F,G";
+let change = txt.charAt(0);
+console.log(change);*/
+
+
+//charAt(index)
+/*let txt = "hello world";
+let answer = txt.charAt(0);
+console.log(answer);*/
+
+
+//charCodeAt(it shows the ASCII code of the letter)
+/*let txt = "hello world";
+let answer = txt.charCodeAt(7);
+console.log(answer);*/
+
+//split()
+/*let txt = "gokul";
+let answer = txt.split("");
+console.log(answer);*/
+
+
+//JAVASCRIPT STRING SEARCH...
+
+//indexOf(Mention the string what thepostion you want to know)
+/*let one = "Hello world this is my javascript program. 1";
+let two = one.indexOf("1");
+console.log(two);*/
+
+
+//lastIndexOf(To check the given string complete with the given string or not)
+/*let one = "Hello world this is my javascript program. 1";   
+let two = one.lastIndexOf("1");
+console.log(two);*/
+
+//search(The search method want to mention the string and it shows 
+//a the position of the string)
+/*let one = "hello world this is joker.";
+const two = one.search(".");
+console.log(two);*/
+
+//match(This one shows the match for the input and the string)
+/*let one =  "hello world learn the letter of l.";
+const two = one.match("l/u/gi");
+console.log(two);*/
+
+//matchAll()
+/*let one =  "hello world learn the letter of l.";
+const two = one.matchAll("l");
+console.log(two);*/
+
+//includes(It will check the given things are present or not)
+/*let one = "helloworld";
+const two = one.includes("");
+console.log(two);*/
+
+//startsWith(check the string with index of the string)
+/*let one = "helloworld";
+const two = one.startsWith("h",0);
+console.log(two);*/
+
+//endsWith(It check the given string ends with the given string or not)
+/*let one = "hello world";
+const two = one.endsWith("d");
+console.log(two);*/

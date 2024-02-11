@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dropout Analysis</title>
+  <!-- Link to Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    /* Custom styles for the Student Dropout Analysis website */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: whitesmoke;
+      color: #333;
+      max-width: max-content;
+      max-height: min-content;
+      overflow-x: hidden;
+    }
+
+    /*pseudoelements for student dropout analysis*/
+    .navbar-brand::first-letter{
+        font-size: 37px;
+    }
+     
+    .navbar-nav .nav-item {
+      margin-right: 20px;
+    }
+
+    .navbar-nav .nav-link {
+      color: #fff;
+      font-size: 25px;
+    }
+
+    #headingbanner{
+      color: #f43308;
+    }
+
+    /* Features Section */
+    .col-md-4 {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .col-md-4 h2 {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .col-md-4 p {
+      font-size: 18px;
+    }
+
+    /* Footer */
+    .footer1 {
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+  align-items: center;
+  height: 110px;
+  width: 1263px;
+}
+
+.footer1 p {
+  font-size: 18px;
+  position: relative;
+  left: 480px;
+}
+
+.footer1 h3 {
+  font-size: 20px;
+  font-style: italic;
+  font-family: 'Courier New', Courier, monospace;
+  position: relative;
+  left: 480px;
+}
+
+.footer1 h3 span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 2s ease-out forwards;
+}
+
+.footer2{
+  font-size: 20px;
+  position: relative;
+  bottom: 60px;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.footer1 h3 span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.footer1 h3 span:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.footer1 h3 span:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.footer1 h3 span:nth-child(4) {
+  animation-delay: 0.9s;
+}
+
+.footer1 h3 span:nth-child(5) {
+  animation-delay: 1s;
+}
+
+.footer1 h3 span:nth-child(6) {
+  animation-delay: 2s;
+}
+
+/*first letter size for footer*/
+#nochange::first-letter {
+  font-size: 22px;
+}
+    /* Hover effect for buttons */
+    .btn:hover {
+      background-color: #ff5733;
+      border-color: #ff5733;
+    }
+
+    /* Animation */
+    .animated {
+      animation-duration: 9s;
+    }
+
+    /* Font Awesome Icons */
+    .icon {
+      font-size: 40px;
+      color: #3498db;
+    }
+    
+    /* Additional CSS Styles */
+    .custom-heading {
+      color: #ff5733;
+      font-size: 36px;
+    }
+
+    /*Log-in Style*/
+    .nav-link{
+        font-size:50px;
+        font-weight: bold;
+        position: relative;
+        top:30px;
+        
+    }
+
+    .background-image {
+      background-image: url('your-additional-background-image.jpg');
+      background-size: cover;
+      background:none;
+    }
+
+    /* Animations */
+    .smoke-effect {
+      background-color: #000;
+      background-image: url('smoke-effect.png');
+      animation: smoke 3s infinite;
+    }
+
+    .bouncing-words {
+      animation: bounce 5s infinite;
+    }
+
+    @keyframes smoke {
+      0% {
+        background-image: url('smoke-effect-1.png');
+      }
+      50% {
+        background-image: url('smoke-effect-2.png');
+      }
+      100% {
+        background-image: url('smoke-effect-3.png');
+      }
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /*slide message*/
+    .slide{
+      background-color: whitesmoke;
+      color:crimson;
+      font-size: 25px;
+      font-weight: bold;
+      font-family: 'Courier New', Courier, monospace;
+      text-shadow: 1px 2px orangered;
+    }
+
+    /*edition*/
+    .edition{
+      position: relative;
+      bottom: 40px;
+    }
+
+    /*Style for class wise student dropout*/
+    .classSelect1{
+      font-weight: bold;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 28px;
+
+    }
+
+    .fullgraph{
+      min-height:15px;
+      min-width: 20px;
+      text-align: center;
+    }
+
+   /*Number Of Department */
+   .department{
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 40px;
+   }
+
+   /*Option For Department*/
+   #doptions{
+    font-weight: bold;
+    text-align: center;
+  }
+
+ /*Style for Branch wise male and female*/
+  .chart {
+      display: flex;
+      align-items: flex-end;
+      width: 80%;
+      height: 200px;
+      padding: 10px;
+    }
+
+    .bar {
+      width: 80%;
+      background-color: #007bff;
+      color: #fff;
+      text-align: center;
+      transition: height 0.3s ease;
+    }
+
+    .bar:hover {
+      height: 80%;
+    }
+
+    #femaleCSE{
+      background-color: #556B2F;
+      color:#000;
+    }
+
+    #studentchange{
+      position: relative;
+      left: 50px;
+      bottom: 50px;
+    }
+
+    /*footericons*/
+    .footericons{
+      display: flex;
+      background-color: white;
+      width: fit-content;
+      position: relative;
+      bottom: 100px;
+    }
+
+    /*Login*/
+    .login{
+      text-align: end;
+      font-size: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      }
+
+    .login:hover{
+      color: #000;
+    }
+
+    #branch-name{
+      position: relative;
+      top: 39px;
+      right: 40px;
+    }
+
+</style>
+</head>
+<body>
+
+    <span class="mainlogo"><img src="../html/logo8.jpg"></span>
+
+<!--welcome message-->
+<div class="slide">
+  <p> <marquee> Welcome To Students Dropout List </marquee> </p>
+</div>
+
+<!--Login-->
+<a href="Audilogin.html">
+<div class="login">Login</div>
+</a>
+
+<!--Department Wise Branch-->
+
+<!--Graph Chart Section-->
+<div class="fullgraph">
+  <label class="classSelect1">Select Year:</label>
+  <select id="classSelect">
+      <option value="0"></option>
+      <option value="1">1 Year</option>
+      <option value="2">2 Year</option>
+      <option value="3">3 Year</option>
+      <option value="4">4 Year</option>
+  </select>
+</div>
+<div>
+  <canvas id="dropoutChart" width="80" height="20"></canvas>
+</div>
+
+<!-- Features Section -->
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4 animated fadeInLeft">
+      <h2>Department wise Students</h2>
+     <!-- <i class="icon fa fa-line-chart"></i> -->
+      <div id="studentchange">
+        <span id="branch-name">
+        <label for="branch">Select Branch:</label>
+          <select id="branch">
+          </span>
+            <otion value=""></otion>
+            <option value="CSE">CSE</option>
+            <option value="ECE">ECE</option>
+            <option value="EEE">EEE</option>
+            <option value="ME">ME</option>
+            <option value="CE">CE</option>
+            <option value="AI">AI</option>
+            <option value="DS">DS</option>
+            <option value="AIDS">AIDS</option>
+            <option value="AIML">AIML</option>
+          </select>
+          <div class="chart">
+            <div class="bar" id="maleCSE">Male: 550</div>
+            <div class="bar" id="femaleCSE">Female: 530</div>
+          </div>
+          </div>
+    </div>
+    <div class="col-md-4 animated fadeInUp">
+      <h2>Students Gender</h2>
+      <i class="icon fa fa-desktop"></i>
+      <p>1.Male <br> 2.Female</p>
+      <canvas id="genderChecking" width="400" height="200"></canvas>
+    </div>
+    <div class="col-md-4 animated fadeInRight">
+      <h2>Yearly Student Dropout</h2>
+      <i class="icon fa fa-lightbulb-o"></i><br><br>
+	<select id="year">
+    <option value=""></option>
+    <option value="2023">2023</option>
+    <option value="2022">2022</option>
+		<option value="2021">2021</option>
+		<option value="2020">2020</option>
+		<option value="2019">2019</option>
+		<option value="2018">2018</option>
+		<option value="2017">2017</option>
+    <option value="2016">2016</option>
+    <option value="2015">2015</option>
+    <option value="2014">2014</option>
+    <option value="2013">2013</option>
+    <option value="2012">2012</option>
+	</select>
+	<canvas id="myChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Footer Section -->
+<footer class="footer1">
+  <p id="nochange">Designed By...</p>
+  <h3 id="authors">
+    <span>Raja Gokulakrishnan</span>
+  </h3>
+  <h2 class="footer2">
+    © Copyright <span id="Ascet">ASCET</span> All Rights Reserved
+  </h2>
+  <!--Icons-->
+  <div class="footericons">
+    <!--Facebook-->
+    <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.audisankara.ac.in%2F&h=AT1P0udeJe_j5d688eomfgvYSlxkMoGSDgZE5PrCa1Bu59m7VakLcWrIQbMR3ewJ7hr_ZNim-xSjDgDDsdzfSRpGhopKxMqEjuiCQ-7pUUKDE_pZmV-VAODA_GMn85LZ9eXE3zjWD8xBVihxMT_Ihd2tBuJ_MROioZQgEw">
+    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 30 30">
+      <path d="M24,4H6C4.895,4,4,4.895,4,6v18c0,1.105,0.895,2,2,2h10v-9h-3v-3h3v-1.611C16,9.339,17.486,8,20.021,8 c1.214,0,1.856,0.09,2.16,0.131V11h-1.729C19.376,11,19,11.568,19,12.718V14h3.154l-0.428,3H19v9h5c1.105,0,2-0.895,2-2V6 C26,4.895,25.104,4,24,4z"></path>
+  </svg><br>
+  </a>
+  <!--Instagram-->
+  <a href="https://instagram.com/audisankara_2001?igshid=NzZlODBkYWE4Ng==">
+  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 64 64">
+    <path d="M 21.580078 7 C 13.541078 7 7 13.544938 7 21.585938 L 7 42.417969 C 7 50.457969 13.544938 57 21.585938 57 L 42.417969 57 C 50.457969 57 57 50.455062 57 42.414062 L 57 21.580078 C 57 13.541078 50.455062 7 42.414062 7 L 21.580078 7 z M 47 15 C 48.104 15 49 15.896 49 17 C 49 18.104 48.104 19 47 19 C 45.896 19 45 18.104 45 17 C 45 15.896 45.896 15 47 15 z M 32 19 C 39.17 19 45 24.83 45 32 C 45 39.17 39.169 45 32 45 C 24.83 45 19 39.169 19 32 C 19 24.831 24.83 19 32 19 z M 32 23 C 27.029 23 23 27.029 23 32 C 23 36.971 27.029 41 32 41 C 36.971 41 41 36.971 41 32 C 41 27.029 36.971 23 32 23 z"></path>
+    </svg><br>
+    </a>
+    <!--Twitter-->
+    <a href="#">
+    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+      <path d="M 24 4.300781 C 23.101563 4.699219 22.199219 5 21.199219 5.101563 C 22.199219 4.5 23 3.5 23.398438 2.398438 C 22.398438 3 21.398438 3.398438 20.300781 3.601563 C 19.300781 2.601563 18 2 16.601563 2 C 13.898438 2 11.699219 4.199219 11.699219 6.898438 C 11.699219 7.300781 11.699219 7.699219 11.800781 8 C 7.699219 7.800781 4.101563 5.898438 1.699219 2.898438 C 1.199219 3.601563 1 4.5 1 5.398438 C 1 7.101563 1.898438 8.601563 3.199219 9.5 C 2.398438 9.398438 1.601563 9.199219 1 8.898438 C 1 8.898438 1 8.898438 1 9 C 1 11.398438 2.699219 13.398438 4.898438 13.800781 C 4.5 13.898438 4.101563 14 3.601563 14 C 3.300781 14 3 14 2.699219 13.898438 C 3.300781 15.898438 5.101563 17.300781 7.300781 17.300781 C 5.601563 18.601563 3.5 19.398438 1.199219 19.398438 C 0.800781 19.398438 0.398438 19.398438 0 19.300781 C 2.199219 20.699219 4.800781 21.5 7.5 21.5 C 16.601563 21.5 21.5 14 21.5 7.5 C 21.5 7.300781 21.5 7.101563 21.5 6.898438 C 22.5 6.199219 23.300781 5.300781 24 4.300781"></path>
+      </svg><br>
+      </a>
+      <!--Whatsapp-->
+      <a href="#">
+      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 30 30">
+        <path d="M 15 3 C 8.373 3 3 8.373 3 15 C 3 17.251208 3.6323415 19.350068 4.7109375 21.150391 L 3.1074219 27 L 9.0820312 25.431641 C 10.829354 26.425062 12.84649 27 15 27 C 21.627 27 27 21.627 27 15 C 27 8.373 21.627 3 15 3 z M 10.892578 9.4023438 C 11.087578 9.4023438 11.287937 9.4011562 11.460938 9.4101562 C 11.674938 9.4151563 11.907859 9.4308281 12.130859 9.9238281 C 12.395859 10.509828 12.972875 11.979906 13.046875 12.128906 C 13.120875 12.277906 13.173313 12.453437 13.070312 12.648438 C 12.972312 12.848437 12.921344 12.969484 12.777344 13.146484 C 12.628344 13.318484 12.465078 13.532109 12.330078 13.662109 C 12.181078 13.811109 12.027219 13.974484 12.199219 14.271484 C 12.371219 14.568484 12.968563 15.542125 13.851562 16.328125 C 14.986562 17.342125 15.944188 17.653734 16.242188 17.802734 C 16.540187 17.951734 16.712766 17.928516 16.884766 17.728516 C 17.061766 17.533516 17.628125 16.864406 17.828125 16.566406 C 18.023125 16.268406 18.222188 16.319969 18.492188 16.417969 C 18.766188 16.515969 20.227391 17.235766 20.525391 17.384766 C 20.823391 17.533766 21.01875 17.607516 21.09375 17.728516 C 21.17075 17.853516 21.170828 18.448578 20.923828 19.142578 C 20.676828 19.835578 19.463922 20.505734 18.919922 20.552734 C 18.370922 20.603734 17.858562 20.7995 15.351562 19.8125 C 12.327563 18.6215 10.420484 15.524219 10.271484 15.324219 C 10.122484 15.129219 9.0605469 13.713906 9.0605469 12.253906 C 9.0605469 10.788906 9.8286563 10.071437 10.097656 9.7734375 C 10.371656 9.4754375 10.692578 9.4023438 10.892578 9.4023438 z"></path>
+    </svg><br>
+    </a>
+    <!--Youtube-->
+    <a href="http://www.youtube.com/@audisankaramedia3288">
+    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 30 30">
+    <path d="M 15 4 C 10.814 4 5.3808594 5.0488281 5.3808594 5.0488281 L 5.3671875 5.0644531 C 3.4606632 5.3693645 2 7.0076245 2 9 L 2 15 L 2 15.001953 L 2 21 L 2 21.001953 A 4 4 0 0 0 5.3769531 24.945312 L 5.3808594 24.951172 C 5.3808594 24.951172 10.814 26.001953 15 26.001953 C 19.186 26.001953 24.619141 24.951172 24.619141 24.951172 L 24.621094 24.949219 A 4 4 0 0 0 28 21.001953 L 28 21 L 28 15.001953 L 28 15 L 28 9 A 4 4 0 0 0 24.623047 5.0546875 L 24.619141 5.0488281 C 24.619141 5.0488281 19.186 4 15 4 z M 12 10.398438 L 20 15 L 12 19.601562 L 12 10.398438 z"></path>
+  </svg>
+  </a>
+  </div>
+</footer>
+<!-- Link to Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+  <!--Script for Gender Checking-->
+ <script>
+// Data for the chart
+  var data = {
+    labels: ['Male', 'Female'],
+    datasets: [{
+      data: [150, 100], // Add the data's for Male and female
+      backgroundColor: ['#FF8C00', '#FFC0CB'], //This for to modify the colors
+    }]
+  };
+
+  // Get the canvas element
+  var ctx = document.getElementById('genderChecking').getContext('2d');
+
+  // Create a bar chart
+  var chart = new Chart(ctx, {
+    type: 'bar',
+    data: data,
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Number Of Students'
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: 'Gender'
+          }
+        }
+      }
+    }
+  }); 
+</script> 
+
+<!--script for year wise students dropout-->
+  <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+		var myChart = new Chart(ctx, {
+			type: 'bar',
+			data: {
+				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+				datasets: [{
+					label: 'Yearly Students Dropout',
+					data: [5, 6, 77, 5, 22, 3, 7, 8, 19, 8,6, 5],  //Here Add the values yearly droping rate
+					backgroundColor: '#C24641',
+					borderColor: '#808080',
+					borderWidth: 1
+				}]
+			},
+			options: {
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
+			}
+		});
+
+		document.getElementById('year').addEventListener('change', function() {
+			var year = this.value;
+			myChart.data.datasets[0].data = [getRandomInt(1, 20), getRandomInt(1, 40), getRandomInt(1, 60), getRandomInt(1, 80), getRandomInt(1, 100), getRandomInt(1, 120), getRandomInt(1, 140), getRandomInt(1, 160), getRandomInt(1, 180), getRandomInt(1, 200), getRandomInt(1, 220), getRandomInt(1, 240)];
+			myChart.update();
+		});
+
+		function getRandomInt(min, max) {
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+	</script> 
+
+  <!--Script For class Wise Students Droping Out From school-->
+   <script>
+    // Sample data for class-wise yearly student dropouts (you can replace this with your data)
+    const classData = {
+        0: [ ],
+        1: [5, 10, 15, 12, 8], //years wise we can add the datas here.
+        2: [7, 8, 10, 7, 5],    // it starts from the starting of the year.
+        3: [10, 15, 20, 18, 12],
+        4: [8, 12, 10, 9, 7],
+        5: [6, 10, 12, 11, 9],
+    };
+
+    const classSelect = document.getElementById("classSelect");
+    const dropoutChart = new Chart(document.getElementById("dropoutChart"), {
+        type: 'line',
+        data: {
+            labels: ['2023', '2022', '2021', '2020', '2019'],  //Here we can add a number of years
+            datasets: [{
+                label: 'Class-wise Dropout',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                data: classData[classSelect.value],
+            }],
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                },
+            },
+        },
+    });
+
+    classSelect.addEventListener("change", () => {
+        const selectedClass = classSelect.value;
+        dropoutChart.data.datasets[0].data = classData[selectedClass];
+        dropoutChart.update();
+    });
+    </script>  
+
+    <script>
+       /*Script for Branch Wise Students Male and Female*/
+       const branchSelect = document.getElementById('branch');
+    const maleCSE = document.getElementById('maleCSE');
+    const femaleCSE = document.getElementById('femaleCSE');
+
+    branchSelect.addEventListener('change', function() {
+      const selectedBranch = branchSelect.value;
+
+      if (selectedBranch === 'CSE') {
+        maleCSE.textContent = 'Male: 550';
+        femaleCSE.textContent = 'Female: 360';
+      } else if (selectedBranch === 'ECE') {
+        maleCSE.textContent = 'Male: 490';
+        femaleCSE.textContent = 'Female: 520';
+      } else if (selectedBranch === 'EEE') {
+        maleCSE.textContent = 'Male: 355';
+        femaleCSE.textContent = 'Female: 525';
+      } else if (selectedBranch === 'ME') {
+        maleCSE.textContent = 'Male: 455';
+        femaleCSE.textContent = 'Female: 155';
+      } else if (selectedBranch === 'CE') {
+        maleCSE.textContent = 'Male: 555';
+        femaleCSE.textContent = 'Female: 355';
+      } else if(selectedBranch === 'AI') {
+        maleCSE.textContent = 'Male: 100';
+        femaleCSE.textContent = 'Female: 100';
+      }else if(selectedBranch === 'DS') {
+        maleCSE.textContent = 'Male: 200';
+        femaleCSE.textContent = 'Female: 300';
+      }else if(selectedBranch === 'AIDS') {
+        maleCSE.textContent = 'Male: 100';
+        femaleCSE.textContent = 'Female: 100';
+      }else if(selectedBranch === 'AIML') {
+        maleCSE.textContent = 'Male: 1000';
+        femaleCSE.textContent = 'Female: 0';
+      }
+    });
+  </script>
+</body>
+</html>
